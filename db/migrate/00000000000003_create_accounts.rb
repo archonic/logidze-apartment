@@ -1,4 +1,4 @@
-class CreateAccounts < ActiveRecord::Migration[5.0]
+class CreateAccounts < ActiveRecord::Migration[5.2]
   def change
     create_table :accounts, force: true do |t|
       t.string :name, null: false

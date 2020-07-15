@@ -24,6 +24,10 @@ module LogidzeApartment
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # Use SQL for schema. This ties us to PG but makes it safe to reset while
+    # using hstore and triggers for logidze
+    config.active_record.schema_format = :sql
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

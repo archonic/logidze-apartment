@@ -1,4 +1,4 @@
-class LogidzeInstall < ActiveRecord::Migration[5.0]
+class LogidzeInstall < ActiveRecord::Migration[5.2]
   require 'logidze/migration'
   include Logidze::Migration
 
@@ -15,7 +15,7 @@ class LogidzeInstall < ActiveRecord::Migration[5.0]
       SQL
     end
 
-    
+
 
     execute <<-SQL
       CREATE OR REPLACE FUNCTION logidze_version(v bigint, data jsonb, ts timestamp with time zone, blacklist text[] DEFAULT '{}') RETURNS jsonb AS $body$
@@ -226,7 +226,7 @@ class LogidzeInstall < ActiveRecord::Migration[5.0]
   end
 
   def down
-    
+
     execute <<-SQL
       DROP FUNCTION logidze_version(bigint, jsonb, timestamp with time zone, text[]) CASCADE;
       DROP FUNCTION logidze_exclude_keys(jsonb, text[]) CASCADE;
@@ -234,6 +234,6 @@ class LogidzeInstall < ActiveRecord::Migration[5.0]
       DROP FUNCTION logidze_snapshot(jsonb, text, text[]) CASCADE;
       DROP FUNCTION logidze_logger() CASCADE;
     SQL
-    
+
   end
 end
